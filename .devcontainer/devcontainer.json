@@ -1,0 +1,13 @@
+{
+  "name": "DataWorks Project",
+  "dockerFile": "Dockerfile",
+  "appPort": [5000],
+  "runArgs": ["--env", "AIPROXY_TOKEN=${localEnv:AIPROXY_TOKEN}"],
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "extensions": [
+    "ms-python.python",
+    "ms-azuretools.vscode-docker"
+  ]
+}
