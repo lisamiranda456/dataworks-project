@@ -24,10 +24,16 @@ jobs:
       - name: Run Docker Container
         run: |
           docker run -d -p 8000:8000 --name my-running-app my-app
-          sleep 5  # Wait for the container to start
+          sleep 10  # Wait for the container to fully start
 
-      - name: Install Prettier inside the container
+      - name: Verify Container is Running
         run: |
+          docker ps -a  # Check running containers
+          docker logs my-running-app  # Check logs
+
+      - name: Install Node.js & Prettier inside the container
+        run: |
+          docker exec my-running-app sh -c "apt update && apt install -y nodejs npm"
           docker exec my-running-app npm install -g prettier@3.4.2
 
       - name: Ensure test file exists
