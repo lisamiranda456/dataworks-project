@@ -1,3 +1,8 @@
 Flask
 requests
-pyngrok
+httpx
+beautifulsoup4
+pillow
+python-dotenv
+markdown
+sqlite3  # (This comes pre-installed with Python but added for clarity)
