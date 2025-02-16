@@ -1,0 +1,215 @@
+[{
+    "type": "function",
+    "function": {
+      "name": "task_B1",
+      "description": "Ensures the provided file path is within the allowed /data directory.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "file_path": {
+            "type": "string",
+            "description": "The file path to validate and secure."
+          }
+        },
+        "required": ["file_path"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "task_B2",
+      "description": "Verifies if a given file path is safe and returns a secure version of the path.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "file_path": {
+            "type": "string",
+            "description": "The file path to check and secure."
+          }
+        },
+        "required": ["file_path"]
+      }
+    }
+  },
+    {
+    "type": "function",
+    "function": {
+      "name": "task_B3",
+      "description": "Fetches data from an API and saves it to a specified file.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "api_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "The URL of the API to fetch data from."
+          },
+          "save_path": {
+            "type": "string",
+            "description": "The file path to save the fetched data."
+          }
+        },
+        "required": ["api_url", "save_path"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "task_B4",
+      "description": "Clones a GitHub repository and commits a change.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "repo_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "The URL of the Git repository to clone."
+          },
+          "commit_message": {
+            "type": "string",
+            "description": "The commit message for the change."
+          }
+        },
+        "required": ["repo_url", "commit_message"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "task_B5",
+      "description": "Executes a SQL query on an SQLite database.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "db_path": {
+            "type": "string",
+            "description": "The file path to the SQLite database."
+          },
+          "query": {
+            "type": "string",
+            "description": "The SQL query to execute."
+          }
+        },
+        "required": ["db_path", "query"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "task_B6",
+      "description": "Scrapes a webpage and extracts data from a specified HTML tag.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "The URL of the webpage to scrape."
+          },
+          "tag": {
+            "type": "string",
+            "description": "The HTML tag to extract data from."
+          }
+        },
+        "required": ["url", "tag"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "task_B7",
+      "description": "Resizes an image and saves it to a specified location.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "image_path": {
+            "type": "string",
+            "description": "The file path of the image to resize."
+          },
+          "output_path": {
+            "type": "string",
+            "description": "The file path to save the resized image."
+          },
+          "size": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "minItems": 2,
+            "maxItems": 2,
+            "description": "The new size of the image (width, height)."
+          }
+        },
+        "required": ["image_path", "output_path", "size"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "task_B8",
+      "description": "Transcribes an MP3 audio file into text using a speech-to-text model.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "audio_path": {
+            "type": "string",
+            "description": "The file path of the MP3 file to transcribe."
+          }
+        },
+        "required": ["audio_path"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "task_B9",
+      "description": "Converts a Markdown file to HTML and saves the output.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "md_path": {
+            "type": "string",
+            "description": "The file path of the Markdown file."
+          },
+          "output_path": {
+            "type": "string",
+            "description": "The file path to save the converted HTML file."
+          }
+        },
+        "required": ["md_path", "output_path"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "task_B10",
+      "description": "Filters a CSV file based on a specified column and value, returning results in JSON format.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "csv_path": {
+            "type": "string",
+            "description": "The file path of the CSV file."
+          },
+          "column_name": {
+            "type": "string",
+            "description": "The column name to filter on."
+          },
+          "value": {
+            "type": "string",
+            "description": "The value to match in the specified column."
+          }
+        },
+        "required": ["csv_path", "column_name", "value"]
+      }
+    }
+  }
+]

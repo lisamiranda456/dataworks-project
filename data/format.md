@@ -1,12 +1,12 @@
-#UNFORMATTED MARKDOWN
+#Unformatted Markdown
 
-THIS  IS A SAMPLE PARAGRAPH WITH EXTRA  SPACES AND TRAILING WHITESPACE.
--   FIRST ITEM
--    SECOND ITEM
-+THIRD ITEM
-    *    FOURTH ITEM
+This  is a sample paragraph with extra  spaces and trailing whitespace.
+-   First item
+-    Second item
++Third item
+    *    Fourth item
 
-```PY
-PRINT("LISA.MIRANDA@GRAMENER.COM")
+```py
+print("${user.email}")
 
 ```
