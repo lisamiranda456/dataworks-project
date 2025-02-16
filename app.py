@@ -22,7 +22,7 @@ os.makedirs(DATA_DIR, exist_ok=True)  # Ensure the directory exists
 
 
 # OpenAI Proxy details
-AIPROXY_URL = "https://llmfoundry.straive.com/openai/v1/chat/completions"
+AIPROXY_URL = "https://api.openai.com/v1/chat/completions"
 AIPROXY_TOKEN = os.getenv("LLMFOUNDRY_TOKEN", "missing-token")
 
 if AIPROXY_TOKEN == "missing-token":
