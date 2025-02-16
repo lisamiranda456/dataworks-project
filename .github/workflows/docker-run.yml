@@ -34,7 +34,7 @@ jobs:
       - name: Test API Endpoint
         run: |
           curl -X POST -H "Content-Type: application/json" \
-          -d '{"task": "Sort contacts in data/contacts.json and save to data/sorted-contacts.json"}' \
+          -d '{"task": "Sort contacts in data/contacts.json and save to data/sorted-contacts_new.json"}' \
           http://localhost:8000/run_task
 
       - name: Stop & Remove Container
