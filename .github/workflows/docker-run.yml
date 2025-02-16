@@ -23,9 +23,10 @@ jobs:
 
       - name: Run Docker Container
         run: |
-          docker run -d -p 8000:8000 --env LLMFOUNDRY_TOKEN=${{ secrets.LLMFOUNDRY_TOKEN }} --name my-running-app my-app
-     
-          sleep 10  # Wait for the container to start
+          docker run -d -p 8000:8000 \
+          --env LLMFOUNDRY_TOKEN="${{ secrets.LLMFOUNDRY_TOKEN }}" \
+          --name my-running-app my-app
+          sleep 10
 
       - name: Debug Environment Variables
         run: echo "LLMFOUNDRY_TOKEN=${{ secrets.LLMFOUNDRY_TOKEN }}"
