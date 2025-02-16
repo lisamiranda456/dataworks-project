@@ -25,7 +25,10 @@ os.makedirs(DATA_DIR, exist_ok=True)  # Ensure the directory exists
 AIPROXY_URL = "https://llmfoundry.straive.com/openai/v1/chat/completions"
 AIPROXY_TOKEN = os.getenv("LLMFOUNDRY_TOKEN", "missing-token")
 
-
+if AIPROXY_TOKEN == "missing-token":
+    print("⚠️ WARNING: LLMFOUNDRY_TOKEN is missing. Authentication will fail!")
+else:
+    print(f"✅ Loaded LLMFOUNDRY_TOKEN: {AIPROXY_TOKEN[:5]}***** (masked for security)")
 
 
 
