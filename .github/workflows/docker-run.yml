@@ -34,7 +34,7 @@ jobs:
         run: |
           docker exec my-running-app sh -c "echo '# Sample Markdown' > /data/format.md"
 
-      - name: Test API: Format Markdown
+      - name: Test API Format Markdown
         run: |
           curl -X POST -H "Content-Type: application/json" \
           -d '{"task": "/data/format.md needs to be formatted using prettier@3.4.2, updating the file in-place"}' \
