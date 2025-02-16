@@ -1,4 +1,4 @@
-name: Docker Build, Push & Test in GitHub Actions
+name: Docker Build, Run & Test in GitHub Actions
 
 on:
   push:
@@ -7,14 +7,24 @@ on:
     branches: [main]
 
 jobs:
-  build-push-run:
+  build-run-test:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build Docker Image
+        run: |
+          docker build -t my-app .
+
+      - name: Run Docker Container
+        run: |
+          docker run -d -p 8000:8000 --env LLMFOUNDRY_TOKEN=${{ secrets.LLMFOUNDRY_TOKEN }} --name my-running-app my-app
+          sleep 10  # Wait for the container to start
 
       - name: Verify Container is Running
         run: |
@@ -24,7 +34,7 @@ jobs:
       - name: Test API Endpoint
         run: |
           curl -X POST -H "Content-Type: application/json" \
-          -d '{"task": "Sort contacts in data/contacts.json and save to data/sorted-contacts_new.json"}' \
+          -d '{"task": "Sort contacts in data/contacts.json and save to data/sorted-contacts.json"}' \
           http://localhost:8000/run_task
 
       - name: Stop & Remove Container
@@ -32,3 +42,4 @@ jobs:
         run: |
           docker stop my-running-app
           docker rm my-running-app
+
