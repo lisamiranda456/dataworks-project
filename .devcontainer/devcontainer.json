@@ -5,6 +5,6 @@
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   "features": {
   "docker-in-docker": "latest",
-  "runArgs": ["--env", "LLMFOUNDRY_TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Imxpc2EubWlyYW5kYUBncmFtZW5lci5jb20ifQ.nvcT6zt6b65Hf-rJE1Q0bwn4KrAeGzGZ6lCi5RP3IhY"],
+  "runArgs": ["--env", "AI_PROXY_TOKEN=eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Imxpc2EubWlyYW5kYUBncmFtZW5lci5jb20ifQ.nvcT6zt6b65Hf-rJE1Q0bwn4KrAeGzGZ6lCi5RP3IhY"],
 }
 }
