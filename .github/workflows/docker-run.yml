@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
       - name: Set up Docker Buildx
@@ -23,27 +23,18 @@ jobs:
 
       - name: Run Docker Container
         run: |
-          docker run -d -p 8000:8000 --name my-running-app my-app
-          sleep 10  # Wait for the container to fully start
+          docker run -d -p 8000:8000 --env LLMFOUNDRY_TOKEN=${{ secrets.LLMFOUNDRY_TOKEN }} --name my-running-app my-app
+          sleep 10  # Wait for the container to start
 
       - name: Verify Container is Running
         run: |
           docker ps -a  # Check running containers
-          docker logs my-running-app  # Check logs
+          docker logs my-running-app  # Check logs for issues
 
-      - name: Install Node.js & Prettier inside the container
-        run: |
-          docker exec my-running-app sh -c "apt update && apt install -y nodejs npm"
-          docker exec my-running-app npm install -g prettier@3.4.2
-
-      - name: Ensure test file exists
-        run: |
-          docker exec my-running-app sh -c "echo '# Sample Markdown' > /data/format.md"
-
-      - name: Test API Format Markdown
+      - name: Test API Endpoint
         run: |
           curl -X POST -H "Content-Type: application/json" \
-          -d '{"task": "/data/format.md needs to be formatted using prettier@3.4.2"}' \
+          -d '{"task": "Sort contacts in data/contacts.json and save to data/sorted-contacts.json"}' \
           http://localhost:8000/run_task
 
       - name: Stop & Remove Container
