@@ -16,8 +16,7 @@ import markdown
 import httpx
 
 app = Flask(__name__)
-os.chdir("/workspaces/dataworks-project/")
-print("Current working directory:", os.getcwd())
+
 DATA_DIR = os.path.abspath("./data")
 os.makedirs(DATA_DIR, exist_ok=True)  # Ensure the directory exists
 
