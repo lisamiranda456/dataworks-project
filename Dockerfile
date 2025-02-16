@@ -1,18 +1,20 @@
-# Use an official Python runtime as a parent image
-FROM python:3.11-slim
+# Use official Python image as base
+FROM python:3.12
 
-# Set the working directory in the container
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy the requirements file and install dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy the rest of the application code
+# Copy application files to the container
 COPY . .
 
-# Expose the port your app runs on
-EXPOSE 8000
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Expose the API port
+EXPOSE 5000
+
+# Set environment variables
+ENV AIPROXY_TOKEN=""
 
 # Run the application
 CMD ["python", "app.py"]
