@@ -8,7 +8,7 @@ on:
 
 jobs:
   build-run-test:
-    runs-on: ubuntu-latest  # Runs on GitHub-hosted Ubuntu machine
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
@@ -23,12 +23,22 @@ jobs:
 
       - name: Run Docker Container
         run: |
-          docker run -d -p 5000:5000 --name my-running-app my-app
-          sleep 5  # Wait for container to start
+          docker run -d -p 8000:8000 --name my-running-app my-app
+          sleep 5  # Wait for the container to start
 
-      - name: Test if API is Running
+      - name: Install Prettier inside the container
         run: |
-          curl --retry 5 --retry-connrefused http://localhost:5000/run?task=test
+          docker exec my-running-app npm install -g prettier@3.4.2
+
+      - name: Ensure test file exists
+        run: |
+          docker exec my-running-app sh -c "echo '# Sample Markdown' > /data/format.md"
+
+      - name: Test API: Format Markdown
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+          -d '{"task": "/data/format.md needs to be formatted using prettier@3.4.2, updating the file in-place"}' \
+          http://localhost:8000/run_task
 
       - name: Stop & Remove Container
         if: always()
