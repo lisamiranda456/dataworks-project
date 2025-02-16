@@ -25,6 +25,8 @@ jobs:
         run: |
           docker run -d -p 8000:8000 --env LLMFOUNDRY_TOKEN=${{ secrets.LLMFOUNDRY_TOKEN }} --name my-running-app my-app
           sleep 10  # Wait for the container to start
+          docker exec my-running-app printenv | grep LLMFOUNDRY_TOKEN
+
 
       - name: Verify Container is Running
         run: |
