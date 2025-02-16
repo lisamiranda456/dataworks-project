@@ -28,7 +28,7 @@ jobs:
 
       - name: Test if API is Running
         run: |
-          curl --retry 5 --retry-connrefused http://localhost:8000/run?task=test
+          curl --retry 5 --retry-connrefused http://localhost:5000/run?task=test
 
       - name: Stop & Remove Container
         if: always()
