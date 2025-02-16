@@ -37,7 +37,7 @@ jobs:
       - name: Test API Format Markdown
         run: |
           curl -X POST -H "Content-Type: application/json" \
-          -d '{"task": "/data/format.md needs to be formatted using prettier@3.4.2, updating the file in-place"}' \
+          -d '{"task": "/data/format.md needs to be formatted using prettier@3.4.2"}' \
           http://localhost:8000/run_task
 
       - name: Stop & Remove Container
