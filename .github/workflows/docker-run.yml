@@ -33,7 +33,7 @@ jobs:
 
       - name: Run Docker Container from Docker Hub
         run: |
-          docker run -d -p 8000:8000 --env LLMFOUNDRY_TOKEN="${{ secrets.LLMFOUNDRY_TOKEN }}" \
+          docker run -d -p 8000:8000 --env LLMFOUNDRY_TOKEN=${{ secrets.LLMFOUNDRY_TOKEN }} \
           --name my-running-app ${{ secrets.DOCKER_HUB_USERNAME }}/dataworks-project:latest
           sleep 10
 
